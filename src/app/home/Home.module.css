@@ -1,11 +1,11 @@
 .container {
   display: flex;
     flex-direction: column;
-    align-items: stretch;
-    justify-content: space-evenly;
+    align-items: center;
+    justify-content: center;
     min-height: 100vh;
     text-align: center;
-    background-color: #c0c0a8;
+    background-color: #ededdc;
     padding: 2rem;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
@@ -15,11 +15,20 @@
     font-size: 1.2rem;
     line-height: 1.5;
     flex-wrap: nowrap;
+    font-family: 'Montserrat', sans-serif;
 }
 
+.card{
+  width: 100%;
+  padding: 0 30px 0 0;
+  background-color: #c0c0a8;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  margin: 1rem;
+}
 .profileImage{
-  max-width: 100%;
-  height: auto;
+  height: 200px;
+  width: 200px;
   border-radius: 25%;
   box-shadow: 0 0 20px rgba(118, 72, 72, 0.5);
   margin-bottom: 1rem;
@@ -52,4 +61,14 @@
   justify-content: center;
   text-align: justify;
   display: flex;
+}
+
+.infoCurso{
+  font-size: 1.2rem;
+  color: #484848;
+  align-items: center;
+  justify-content: center;
+  text-align: justify;
+  display: flex;
+  font-weight: bold;
 }
