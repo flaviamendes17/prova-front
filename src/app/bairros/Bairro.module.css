@@ -1,0 +1,136 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  padding: 20px;
+  background-color: #bbbba2;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.title {
+  font-size: 32px;
+  font-weight: bold;
+  color: #604848;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.description {
+  font-size: 18px;
+  color: #604848;
+  margin-bottom: 30px;
+  text-align: center;
+  max-width: 600px;
+}
+
+.list {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  width: 100%;
+}
+
+.listItem {
+  font-size: 14px;
+  color: #604848;
+  padding: 10px;
+  border-bottom: 1px solid #ddd;
+}
+
+.listItem:last-child {
+  border-bottom: none;
+}
+
+.highlight {
+  color: #604848;
+  font-weight: bold;
+}
+
+.card {
+  width: calc(33.33% - 20px); 
+  max-width: 300px; 
+  margin: 0; 
+  padding: 20px;
+  border: 1px solid #c0c0a8;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s, box-shadow 0.2s;
+  cursor: pointer;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+.cardTitle {
+  font-size: 20px;
+  font-weight: bold;
+  color: #604848;
+  margin-bottom: 10px;
+}
+
+.cardContent {
+  font-size: 16px;
+  color: #604848;
+}
+
+.loadingOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(255, 255, 255, 0.8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.loadingGif {
+  width: 100px;
+  height: 100px;
+}
+
+.bairrosContainer {
+  display: flex;
+  flex-wrap: wrap; 
+  gap: 20px; 
+  justify-content: center;
+align-items: center;
+  padding: 20px;
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+  gap: 10px; 
+}
+
+.paginationButton {
+  padding: 10px 15px;
+  font-size: 14px;
+  color: #604848;
+  background-color: #f0f0e0;
+  border: 1px solid #c0c0a8;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.2s, color 0.2s;
+}
+
+.paginationButton:hover {
+  background-color: #c0c0a8;
+  color: #fff;
+}
+
+.paginationButton.active {
+  background-color: #604848;
+  color: #fff;
+  font-weight: bold;
+}

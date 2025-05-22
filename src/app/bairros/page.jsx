@@ -29,19 +29,20 @@ export default function Bairros() {
     useEffect(() => {
         const fetchBairros = async () => {
             try {
-                const response = await axios.get('http://localhost:4000/api/bairros', {
-                    headers: {
-                        'x-api-key': '15D2dm2RED0umccWIl6A'
-                    }
-                });
-                setData(prev => ({
-                    ...prev,
-                    bairros: response.data,
-                    loading: false,
-                }));
+            const response = await axios.get('http://localhost:4000/api/bairros', {
+                headers: {
+                'x-api-key': '15D2dm2RED0umccWIl6A'
+                }
+            });
+            setData(prev => ({
+                ...prev,
+                bairros: response.data,
+                loading: false,
+            }));
+            toast.success('Bairros carregados com sucesso!');
             } catch (error) {
-                toast.error('Erro ao buscar bairros!');
-                setData(prev => ({ ...prev, loading: false }));
+            toast.error('Erro ao buscar bairros!');
+            setData(prev => ({ ...prev, loading: false }));
             }
         };
 
@@ -53,6 +54,20 @@ export default function Bairros() {
         setTimeout(() => {
             router.push(`/bairros/${bairroId}`); 
         }, 2000); 
+    };
+
+    const handleCardClick = async (bairro) => {
+        setModalInfo({ visible: true, bairro: bairro.nome, ocorrencias: null, loading: true });
+
+        try {
+            const response = await axios.get(`http://localhost:4000/api/ocorrencias/${bairro.id}`, {
+                headers: HEADER,
+            });
+            setModalInfo({ visible: true, bairro: bairro.nome, ocorrencias: response.data, loading: false });
+        } catch (error) {
+            toast.error('Erro ao buscar ocorrências!');
+            setModalInfo({ visible: true, bairro: bairro.nome, ocorrencias: null, loading: false });
+        }
     };
 
     const paginatedBairros = () => {
@@ -77,9 +92,9 @@ export default function Bairros() {
                             key={bairro.id}
                             title={bairro.nome}
                             className={styles.card}
-                            onClick={() => handleRedirect(bairro.id)} 
+                            onClick={() => handleCardClick(bairro)} 
                         >
-                            {bairro.nome}
+                            {bairro.cidade} - {bairro.estado}
                         </Card>
                     ))
                 )}
@@ -103,11 +118,13 @@ export default function Bairros() {
             >
                 {modalInfo.loading ? (
                     <Skeleton active />
-                ) : (
+                ) : modalInfo.ocorrencias ? (
                     <div>
                         <h3>Ocorrências:</h3>
                         <pre>{JSON.stringify(modalInfo.ocorrencias, null, 2)}</pre>
                     </div>
+                ) : (
+                    <p>Nenhuma ocorrência encontrada.</p>
                 )}
             </Modal>
             <ToastContainer position='top-right' autoClose={4500} />
